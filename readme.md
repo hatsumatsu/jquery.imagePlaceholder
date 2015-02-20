@@ -62,7 +62,10 @@ $( '.item-to-append' )
     .imagePlaceholder();
 
 $( '.layout-container' )
-    .masonry( 'appended', $( '.item-to-append' ) );    
+    .masonry( 'appended', $( '.item-to-append' ) );
+
+$( '.item-to-append' )
+    .removeClass( 'hidden' );        
 ```
 
 ## Demo 
