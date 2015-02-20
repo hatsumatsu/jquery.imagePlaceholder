@@ -1,7 +1,12 @@
 /**
- * imagePlaceholder 
+ * jquery.imagePlaceholder plugin
+ * https://github.com/hatsumatsu/jquery.imagePlaceholder
  * 
- * Based on the plugin boilerplate by Jonathan Nicol
+ * HATSUMATSU
+ * http://hatsumatsu.de
+ * 2015
+ * 
+ * Based on the jquery plugin boilerplate by Jonathan Nicol
  * http://jonathannicol.com/blog/2012/05/06/a-jquery-plugin-boilerplate/
  */
 ;( function( $ ) {
