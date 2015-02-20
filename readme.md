@@ -49,6 +49,8 @@ $( '.item-to-append' )
 $( '.item-to-append' ).imagesLoaded( function() {
     $( '.layout-container' )
       .masonry( 'appended', $( '.item-to-append' ) )
+
+    $( '.item-to-append' )
       .removeClass( 'hidden' );    
 } );
 ```
