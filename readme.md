@@ -4,7 +4,7 @@
 
 Using complex layout algorithms like [Masonry](http://masonry.desandro.com/) with image-heavy content, you usually need something like [imagesLoaded](http://masonry.desandro.com/appendix.html#imagesloaded) to wait for the images to be completely loaded. This is because  image dimensions are – despite using height and width attributes on the `<img>`  – unknown to the browser until loading is completed.
 
-**jquery.imagePlacegolder** takes a different approach to this issue. It replaces each image with an empty `<canvas>` element using the image's values for `width` and `height` attributes and places the image on top of this placeholder. Since `<canvas>` behaves exactly like `<img>` regarding its intrinsic aspect ratio you can start calculating your layout as soon as the DOM is ready. Since the image's classes are copied, all CSS of your images apply to the placeholder as well.
+**jquery.imagePlacegolder** takes a different approach to this issue. It replaces each image with an empty `<canvas>` element using the image's values for `width` and `height` attributes and places the image on top of this placeholder. Since `<canvas>` behaves exactly like `<img>` regarding its intrinsic aspect ratio you can start calculating your layout as soon as the DOM is ready. Since the image's classes are copied, the CSS of your images applies to the placeholder as well.
 
 ### Pro's
 + Calculate layout before images are loaded
@@ -34,33 +34,42 @@ Using complex layout algorithms like [Masonry](http://masonry.desandro.com/) wit
 
 + call the plugin like `$( '.container' ).imagePlaceholder()`
 
-### Using jquery.imagePlaceholder width Masonry
+### Using jquery.imagePlaceholder with Masonry
 
-Just call imagePlacehgoder befgore you append an item to the masonry layout. 
-So instead of this...
+Just call imagePlaceholder before you append items to the masonry layout. 
 
-```css
+So instead of...
+
+```js
 $( '.item-to-append' )
-  .appendTo( $( '.layout-container' ) );
+    .addClass( 'hidden' )
+    .appendTo( $( '.layout-container' ) );
 
 // might take a while
 $( '.item-to-append' ).imagesLoaded( function() {
     $( '.layout-container' )
-      .masonry( 'appended', $( '.item-to-append' ) );    
+      .masonry( 'appended', $( '.item-to-append' ) )
+      .removeClass( 'hidden' );    
 } );
 ```
 
 ... do this 
 
-```css 
+```js 
 $( '.item-to-append' )
-  .appendTo( $( '.layout-container' ) );
-  .imagePlaceholder();
+    .addClass( 'hidden' )
+    .appendTo( $( '.layout-container' ) )
+    .imagePlaceholder();
 
 $( '.layout-container' )
-  .masonry( 'appended', $( '.item-to-append' ) );    
-} );
+    .masonry( 'appended', $( '.item-to-append' ) );    
 ```
+
+## Demo 
+
+[Check out this pen](http://codepen.io/superstructure-net/pen/azVjWY/)
+
+(In this demo `imagesLoaded()` is used to destroy the placeholder after the images have loaded completely)
 
 ## Credits
 + I used the [jquery plugin boilerplate by Jonathan Nicol](http://jonathannicol.com/blog/2012/05/06/a-jquery-plugin-boilerplate/)
