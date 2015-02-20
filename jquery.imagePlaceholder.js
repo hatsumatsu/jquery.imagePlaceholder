@@ -51,7 +51,30 @@
 					} );
 							
 					image.after( placeholder );
+
+					if( !checkRatio( placeholder ) ) {
+						forceRatio( placeholder );
+					}
 				} );	
+		}
+
+		function checkRatio( placeholder ) {
+			var ratioAttributes = parseInt( placeholder.attr( 'width' ) ) / parseInt( placeholder.attr( 'height' ) );
+			var ratioCSS = parseInt( placeholder.width() ) / parseInt( placeholder.height() );
+
+			if( Math.abs( ratioAttributes - ratioCSS ) > 0.1 ) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function forceRatio( placeholder ) {
+			var ratio = parseInt( placeholder.attr( 'width' ) ) / parseInt( placeholder.attr( 'height' ) );
+			var height =  placeholder.width() * ratio;
+			placeholder.css( {
+				'height': height + 'px'
+			} );
 		}
 
 		function option( key, val ) {
