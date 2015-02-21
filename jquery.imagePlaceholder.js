@@ -71,7 +71,7 @@
 
 		function forceRatio( placeholder ) {
 			var ratio = parseInt( placeholder.attr( 'width' ) ) / parseInt( placeholder.attr( 'height' ) );
-			var height =  placeholder.width() * ratio;
+			var height =  Math.round( placeholder.width() / ratio );
 			placeholder.css( {
 				'height': height + 'px'
 			} );
