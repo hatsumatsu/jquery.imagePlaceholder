@@ -4,7 +4,9 @@
 
 Using complex layout algorithms like [Masonry](http://masonry.desandro.com/) with image-heavy content, you usually need something like [imagesLoaded](http://masonry.desandro.com/appendix.html#imagesloaded) to wait for the images to be completely loaded. This is because  image dimensions are – despite using height and width attributes on the `<img>`  – unknown to the browser until loading is completed.
 
-**jquery.imagePlacegolder** takes a different approach to this issue. It replaces each image with an empty `<canvas>` element using the image's values for `width` and `height` attributes and places the image on top of this placeholder. Since `<canvas>` behaves exactly like `<img>` regarding its intrinsic aspect ratio you can start calculating your layout as soon as the DOM is ready. Since the image's classes are copied, the CSS of your images applies to the placeholder as well.
+**jquery.imagePlacegolder** takes a different approach to this issue: It replaces each image with an empty `<canvas>` element using the image's values for `width` and `height` attributes and placeing the image on top of this placeholder. Since `<canvas>` behaves exactly like `<img>` [1] regarding its intrinsic aspect ratio you can start calculating your layout as soon as the DOM is ready. Since the image's classes are copied, the CSS of your images applies to the placeholder as well.
+
+[1] At least in modern browsers. For legacy browsers treating `<canvas>` as a block-level element I introduced a function to force the correct dimensions via CSS.
 
 ### Pro's
 + Calculate layout before images are loaded
